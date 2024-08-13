@@ -15,3 +15,11 @@ func SaveEvent(event *domains.Event) (*domains.Event, *errors.HttpError) {
 
 	return event, nil
 }
+
+func FindOneEventById(id int) *domains.Event {
+	var event domains.Event
+
+	config.Database.First(&event, id)
+
+	return &event
+}
