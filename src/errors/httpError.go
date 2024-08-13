@@ -12,5 +12,12 @@ func UnauthorizedError() HttpError {
 		"Unauthorized",
 		"You are not authorized to access this resource",
 	}
+}
 
+func NotFoundError() *HttpError {
+	return &HttpError{
+		404,
+		"Not found",
+		"The requested resource was not found",
+	}
 }
