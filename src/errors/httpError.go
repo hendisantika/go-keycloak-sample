@@ -29,3 +29,11 @@ func DataAccessLayerError(message string) *HttpError {
 		message,
 	}
 }
+
+func BadRequestError(message string) *HttpError {
+	return &HttpError{
+		400,
+		"Bad Request",
+		message,
+	}
+}
