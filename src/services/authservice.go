@@ -1,6 +1,9 @@
 package services
 
-import "os"
+import (
+	"github.com/Nerzal/gocloak/v13"
+	"os"
+)
 
 type LoginResponse struct {
 	AccessToken string `json:"access_token"`
@@ -14,3 +17,9 @@ var (
 	realm        = os.Getenv("REALM")
 	hostname     = os.Getenv("HOST")
 )
+
+var client gocloak.GoCloak
+
+func InitializeOauthServer() {
+	client = gocloak.NewClient(hostname)
+}
