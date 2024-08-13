@@ -5,3 +5,12 @@ type HttpError struct {
 	Error   string `json:"error"`
 	Message string `json:"message"`
 }
+
+func UnauthorizedError() HttpError {
+	return HttpError{
+		401,
+		"Unauthorized",
+		"You are not authorized to access this resource",
+	}
+
+}
