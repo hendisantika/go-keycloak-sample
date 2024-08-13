@@ -23,3 +23,10 @@ func FindOneEventById(id int) *domains.Event {
 
 	return &event
 }
+
+func FindAllEvents() []domains.Event {
+	var events []domains.Event
+	config.Database.Find(&events)
+
+	return events
+}
