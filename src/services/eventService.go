@@ -3,11 +3,13 @@ package services
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/gorilla/mux"
 	"go-keycloak-sample/src/domains"
 	"go-keycloak-sample/src/errors"
 	"go-keycloak-sample/src/repositories"
 	"io/ioutil"
 	"net/http"
+	"strconv"
 )
 
 func CreateEvent(w http.ResponseWriter, r *http.Request) {
@@ -30,4 +32,28 @@ func CreateEvent(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(&ev)
+}
+
+func GetOneEvent(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	idStr := params["id"]
+
+	id, err := strconv.Atoi(idStr)
+
+	if err != nil {
+		w.WriteHeader(400)
+		json.NewEncoder(w).Encode(
+			errors.BadRequestError("Id must be an integer"))
+		return
+	}
+
+	event := repositories.FindOneEventById(id)
+
+	if event == nil {
+		w.WriteHeader(404)
+		json.NewEncoder(w).Encode(errors.NotFoundError())
+		return
+	}
+
+	json.NewEncoder(w).Encode(&event)
 }
