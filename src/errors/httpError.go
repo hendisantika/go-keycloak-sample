@@ -21,3 +21,11 @@ func NotFoundError() *HttpError {
 		"The requested resource was not found",
 	}
 }
+
+func DataAccessLayerError(message string) *HttpError {
+	return &HttpError{
+		400,
+		"Data access error",
+		message,
+	}
+}
