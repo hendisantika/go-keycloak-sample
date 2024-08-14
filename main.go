@@ -9,6 +9,10 @@ import (
 	"net/http"
 )
 
+func main() {
+	run()
+}
+
 func run() {
 	config.DbConnect()
 	services.InitializeOauthServer()
@@ -26,4 +30,11 @@ func registerRoutes(router *mux.Router) {
 
 func registerControllerRoutes(controller controllers.Controller, router *mux.Router) {
 	controller.RegisterRoutes(router)
+}
+
+func commonMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Add("Content-Type", "application/json")
+		next.ServeHTTP(w, r)
+	})
 }
