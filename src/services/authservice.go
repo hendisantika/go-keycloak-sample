@@ -22,7 +22,7 @@ var (
 	hostname     = os.Getenv("HOST")
 )
 
-var client gocloak.GoCloak
+var client *gocloak.GoCloak
 
 func InitializeOauthServer() {
 	client = gocloak.NewClient(hostname)
