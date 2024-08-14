@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/gorilla/mux"
 	"go-keycloak-sample/src/config"
+	"go-keycloak-sample/src/controllers"
 	"go-keycloak-sample/src/services"
 	"log"
 	"net/http"
@@ -17,4 +18,8 @@ func run() {
 	registerRoutes(router)
 
 	log.Fatal(http.ListenAndServe(":8081", router))
+}
+
+func registerRoutes(router *mux.Router) {
+	registerControllerRoutes(controllers.EventController{}, router)
 }
