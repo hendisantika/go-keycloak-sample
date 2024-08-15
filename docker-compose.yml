@@ -4,7 +4,7 @@ services:
     command:
       - start-dev
       - --health-enabled=true
-      - --import-realm
+    #      - --import-realm
     volumes:
       - ./keycloak:/opt/keycloak/data
     #      - ./PowerRanger.json:/opt/keycloak/data/import/PowerRanger.json
