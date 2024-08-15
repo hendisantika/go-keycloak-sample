@@ -22,7 +22,7 @@ func run() {
 
 	registerRoutes(router)
 
-	fmt.Println("Hello .... Start the service")
+	fmt.Println("Hello .... Start the service on 8081")
 	log.Fatal(http.ListenAndServe(":8081", router))
 }
 
