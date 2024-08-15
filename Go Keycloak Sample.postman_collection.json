@@ -1,0 +1,150 @@
+{
+  "info": {
+    "_postman_id": "42243c08-0767-4964-a105-77ac2e6cb648",
+    "name": "Go Keycloak Sample",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "276892"
+  },
+  "item": [
+    {
+      "name": "Generate Token",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "client_id",
+              "value": "my-go-service",
+              "type": "text"
+            },
+            {
+              "key": "client_secret",
+              "value": "ASAjLseDVyuRvHjtTf26gvR1USoT0uO4",
+              "type": "text"
+            },
+            {
+              "key": "grant_type",
+              "value": "client_credentials",
+              "type": "text"
+            },
+            {
+              "key": "scope",
+              "value": "openid",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8080/realms/PowerRanger/protocol/openid-connect/token",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "realms",
+            "PowerRanger",
+            "protocol",
+            "openid-connect",
+            "token"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add new event",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJMVFFGV1phc0JKNDdSSTV0ZVc1VEVadGR2Yi1oRF9LOGN1LXVqU0ptc2tBIn0.eyJleHAiOjE3MjM2OTUyMTksImlhdCI6MTcyMzY5NDkxOSwianRpIjoiNGViNjg5MjAtNTAxNi00MWY4LWFiNTUtZjdmMzJjMjQyZjFlIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9Qb3dlclJhbmdlciIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI2ZWQwMjVhZC0wZGUyLTQ0MGQtYWIyZi0zMWMxOTA1NjcwZjMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJteS1nby1zZXJ2aWNlIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIvKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsImRlZmF1bHQtcm9sZXMtcG93ZXJyYW5nZXIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImNsaWVudEhvc3QiOiIxOTIuMTY4LjY1LjEiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzZXJ2aWNlLWFjY291bnQtbXktZ28tc2VydmljZSIsImNsaWVudEFkZHJlc3MiOiIxOTIuMTY4LjY1LjEiLCJjbGllbnRfaWQiOiJteS1nby1zZXJ2aWNlIn0.g6ofRwI0kWLM9EIIGn4-3s--q0SsQhm3KYAUrJM-fOwAZhcYDg2I_Ara09GAETSbuBooV62Y-aU-WIOUjQ5HQ8WLKGb4boT1QdK0FvqpQ8UIiHGYHie3XUPY09sbixlHiBkjz3QRtKC46Cg63ncRxLoCh8EYNdi_yXIrr7NSL7gA0QXNbYdTodEGye3Aj0hzDOG97afs1VGNSmtTE3eTra-55lVDHJ8T6-oHxfTn5kf0Y9i46WSCmhrk4cuxh5jCFrHYkqtEeVeglmBO635B5pTjTy-24LiNZp6sNxAN7W8Uj8M3kX_Lel26fL-qMCGSP0nH6UKzjricDt0t_bbJHA",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"Title\": \"Test 1\",\n    \"Description\": \"Description\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/events",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "events"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Events",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJMVFFGV1phc0JKNDdSSTV0ZVc1VEVadGR2Yi1oRF9LOGN1LXVqU0ptc2tBIn0.eyJleHAiOjE3MjM2OTUzMTcsImlhdCI6MTcyMzY5NTAxNywianRpIjoiOWVlMzJmZmYtMDkyNy00YTk1LTg1YzYtNTkzM2ZlMzVhZjkxIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9Qb3dlclJhbmdlciIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI2ZWQwMjVhZC0wZGUyLTQ0MGQtYWIyZi0zMWMxOTA1NjcwZjMiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJteS1nby1zZXJ2aWNlIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIvKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsImRlZmF1bHQtcm9sZXMtcG93ZXJyYW5nZXIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJjbGllbnRIb3N0IjoiMTkyLjE2OC42NS4xIiwicHJlZmVycmVkX3VzZXJuYW1lIjoic2VydmljZS1hY2NvdW50LW15LWdvLXNlcnZpY2UiLCJjbGllbnRBZGRyZXNzIjoiMTkyLjE2OC42NS4xIiwiY2xpZW50X2lkIjoibXktZ28tc2VydmljZSJ9.XDnAWLMwMzIQBdIUqOopwOWbo0d0x-Php3wHsGmT3GmdG-IPBBlOrjs18EydV09qXGyPEG6mPnCxEvr0QAzF7j7PDHl89JTXQTxkW1dstDlS3S7xYIdFFENk5hp_wkYxXDqSFeg3--uiJ72S4VC36X0woWr2pyrd8-mG-8WKbgY3KsQ7P08XjFjshJm2Rt4r343RlyKbIt48ko-3_VK5xj7fOCMyZbm6Q1rkNja6YkuxlWSXX2S4Uu15iD-uWFKh8sVC1FK2W3hyE9XYkxcq5sIYe4miMCH3aZqcon9WUjET-e3WddxBQdviCJOUBaOhiZflsgI6UFjQeCAxRty9Pg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/events",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "events"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Event By ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/events/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "events",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
