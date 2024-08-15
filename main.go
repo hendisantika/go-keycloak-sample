@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gorilla/mux"
 	"go-keycloak-sample/src/config"
 	"go-keycloak-sample/src/controllers"
@@ -21,6 +22,7 @@ func run() {
 
 	registerRoutes(router)
 
+	fmt.Println("Hello .... Start the service")
 	log.Fatal(http.ListenAndServe(":8081", router))
 }
 
